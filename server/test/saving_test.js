@@ -5,7 +5,7 @@ const WebDev = require('../models/webdev')
 describe('Saving records', () => {
 
   // create tests, with individual test descriptions (it)
-  it('Saves record to db', (done) => {
+  it('Saves record to db', async () => {
     // this is what we want to get out of the test
     // create new instance of model with a certain property
     let term = new WebDev({
@@ -13,10 +13,8 @@ describe('Saving records', () => {
       description: 'hypertext reference'
     })
     // save to db (mongoose method), return Promise, then fire fct.
-    term.save().then(() => {
+    await term.save()
       // .isNew returns true when var is created locally but not yet saved on db
       assert(term.isNew === false)
-      done()
-    })
   })
 })
